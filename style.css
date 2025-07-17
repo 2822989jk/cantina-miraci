@@ -1,49 +1,137 @@
-/* Reset básico */
+/* Reset básico para remover margens/padding padrão e facilitar responsividade */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Cores principais */
+/* Estilo base do corpo */
 body {
   font-family: Arial, sans-serif;
-  background-color: #ffffff; /* branco */
-  color: #b30000; /* vermelho escuro */
+  background-color: #ffffff; /* fundo branco */
+  color: #b30000;            /* texto vermelho escuro */
   line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;       /* centraliza conteúdo horizontalmente */
 }
 
-/* Cabeçalho fixo */
+/* Cabeçalho fixo no topo */
 header {
-  background-color: #b30000;
-  color: #fff;
+  background-color: #b30000; /* vermelho forte */
+  color: white;
   padding: 1rem;
   position: fixed;
-  width: 100%;
   top: 0;
-  z-index: 1000;
+  width: 100%;
+  z-index: 1000;             /* mantém acima de outros elementos */
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
 }
 
+/* Título no cabeçalho */
 header h1 {
   font-size: 1.5rem;
 }
 
+/* Botão do menu (☰) */
 #menu-toggle {
   background: none;
   border: none;
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   cursor: pointer;
 }
 
-/* Espaço para o conteúdo abaixo do header */
+/* Wrapper principal: menu + conteúdo */
 .content-wrapper {
   display: flex;
-  margin-top: 70px;
+  flex-direction: row;
+  width: 100%;
+  max-width: 1000px;       /* limita largura em telas grandes */
+  margin-top: 70px;        /* espaço para o cabeçalho fixo */
 }
 
-/* Menu lateral */
-nav
+/* Menu lateral (oculto por padrão) */
+#menu {
+  background-color: #b30000; /* vermelho */
+  color: white;
+  width: 220px;
+  padding: 1rem;
+  display: none;             /* só aparece no modo 'aberto' */
+  flex-shrink: 0;
+}
+
+/* Quando clicado (via JS), exibe o menu */
+#menu.aberto {
+  display: block;
+}
+
+/* Lista sem marcadores */
+#menu ul {
+  list-style: none;
+}
+
+/* Itens do menu */
+#menu li {
+  margin-bottom: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+/* Quando clicado: animação de mexer */
+#menu li:active {
+  animation: mexer 0.4s ease;
+}
+
+/* Links dentro do menu */
+#menu a {
+  text-decoration: none;
+  color: white;
+}
+
+/* Animação de "mexer" ao clicar nos itens */
+@keyframes mexer {
+  0%   { transform: scale(1); }
+  25%  { transform: scale(1.1) rotate(3deg); }
+  50%  { transform: scale(0.95) rotate(-3deg); }
+  75%  { transform: scale(1.05) rotate(2deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+/* Conteúdo principal */
+main {
+  flex: 1;
+  padding: 1rem;
+  width: 100%;
+}
+
+/* Centraliza todas as seções */
+main > section {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Estilo da imagem do macarrão */
+.prato-do-dia img {
+  width: 250px;               /* tamanho reduzido */
+  margin-top: 1rem;
+  transition: transform 0.4s ease;
+  border: 3px solid #b30000;
+  border-radius: 8px;
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Zoom ao passar o mouse */
+.prato-do-dia img:hover {
+  transform: scale(1.15);
+}
+
+/* Quando clicada, ativa animação adicional via JS */
+.prato-do-dia img.img-ampliada {
+  animation
