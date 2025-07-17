@@ -1,217 +1,49 @@
-/* RESET básico para tirar margens e paddings padrão */
+/* Reset básico */
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* inclui padding e border na largura */
+  box-sizing: border-box;
 }
 
-/* Fonte base e layout vertical da página */
+/* Cores principais */
 body {
   font-family: Arial, sans-serif;
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
+  background-color: #ffffff; /* branco */
+  color: #b30000; /* vermelho escuro */
+  line-height: 1.6;
 }
 
-/* Cabeçalho fixo no topo */
+/* Cabeçalho fixo */
 header {
-  position: fixed; /* fica fixo na tela */
+  background-color: #b30000;
+  color: #fff;
+  padding: 1rem;
+  position: fixed;
+  width: 100%;
   top: 0;
-  left: 0;
-  right: 0;
-  height: 60px;
-  background: #4caf50; /* verde agradável */
-  color: white;
+  z-index: 1000;
   display: flex;
   align-items: center;
-  padding: 0 1rem;
-  z-index: 1000; /* fica acima dos outros elementos */
+  justify-content: space-between;
 }
 
-/* Título no cabeçalho ocupa o máximo de espaço possível */
 header h1 {
-  flex: 1;
   font-size: 1.5rem;
 }
 
-/* Botão para abrir menu, escondido no desktop */
 #menu-toggle {
-  font-size: 1.5rem;
-  background: transparent;
+  background: none;
   border: none;
   color: white;
+  font-size: 1.5rem;
   cursor: pointer;
-  display: none; /* só aparece no mobile */
 }
 
-/* Wrapper que agrupa menu e conteúdo principal */
+/* Espaço para o conteúdo abaixo do header */
 .content-wrapper {
   display: flex;
-  margin-top: 60px; /* empurra para baixo do cabeçalho fixo */
-  flex: 1;
-  min-height: calc(100vh - 60px - 30px); /* altura total menos cabeçalho e rodapé */
+  margin-top: 70px;
 }
 
-/* Menu lateral fixo à esquerda */
-nav {
-  width: 250px;
-  background: #2e7d32; /* verde escuro */
-  color: white;
-  padding-top: 1rem;
-  position: fixed;
-  top: 60px; /* abaixo do cabeçalho */
-  bottom: 30px; /* acima do rodapé */
-  left: 0;
-  overflow-y: auto; /* scroll se o menu crescer */
-  transition: transform 0.3s ease; /* animação ao abrir/fechar no mobile */
-  z-index: 999;
-}
-
-nav ul {
-  list-style: none; /* tira marcadores */
-}
-
-nav li {
-  padding: 1rem;
-  border-bottom: 1px solid #4caf50;
-}
-
-nav li a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  display: block;
-}
-
-nav li a:hover {
-  background: #66bb6a;
-}
-
-/* Conteúdo principal ocupa todo espaço ao lado do menu */
-main {
-  flex: 1;
-  margin-left: 250px; /* espaço para o menu */
-  padding: 1rem 2rem;
-  overflow-y: auto;
-}
-
-main h2 {
-  margin-bottom: 0.5rem;
-  color: #4caf50;
-}
-
-/* Imagem do prato do dia */
-.prato-do-dia img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  cursor: pointer; /* indica que é clicável */
-  transition: transform 0.3s ease;
-}
-
-/* Classe para imagem ampliada (quando clicada) */
-.img-ampliada {
-  transform: scale(1.2); /* aumenta 20% */
-  position: relative;
-  z-index: 10;
-}
-
-/* Vídeo responsivo */
-.video-wrapper {
-  position: relative;
-  padding-bottom: 56.25%; /* proporção 16:9 */
-  padding-top: 25px;
-  height: 0;
-  margin-bottom: 1rem;
-}
-
-.video-wrapper iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-  border-radius: 8px;
-}
-
-/* Estilo da enquete */
-.enquete {
-  margin-top: 2rem;
-  background: #e8f5e9;
-  padding: 1rem;
-  border-radius: 8px;
-  max-width: 400px;
-}
-
-.enquete p {
-  font-weight: bold;
-  margin-bottom: 1rem;
-}
-
-.enquete button {
-  padding: 0.5rem 1rem;
-  margin-right: 1rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  background-color: #4caf50;
-  color: white;
-  transition: background-color 0.3s ease;
-}
-
-.enquete button:hover {
-  background-color: #388e3c;
-}
-
-.resultado {
-  margin-top: 1rem;
-  font-style: italic;
-  color: #2e7d32;
-}
-
-/* Rodapé fino e cinza */
-footer {
-  height: 30px;
-  background: #ccc;
-  text-align: center;
-  line-height: 30px; /* centraliza texto verticalmente */
-  font-size: 0.9rem;
-  color: #555;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
-/* RESPONSIVO: telas até 768px (celulares, tablets) */
-@media (max-width: 768px) {
-  /* Mostra botão do menu no topo */
-  #menu-toggle {
-    display: block;
-  }
-
-  /* Menu lateral fica escondido inicialmente */
-  nav {
-    position: fixed;
-    width: 200px;
-    top: 60px;
-    bottom: 30px;
-    left: 0;
-    background: #2e7d32;
-    transform: translateX(-100%); /* esconde fora da tela */
-    z-index: 10000;
-  }
-
-  /* Quando menu está aberto (classe 'aberto'), ele aparece */
-  nav.aberto {
-    transform: translateX(0);
-  }
-
-  /* Conteúdo principal ocupa toda largura */
-  main {
-    margin-left: 0;
-    padding: 1rem;
-  }
-}
+/* Menu lateral */
+nav
