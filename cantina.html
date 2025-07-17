@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cantina da Miraci</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 🔝 CABEÇALHO COM NOME E MENU INTEGRADO -->
+  <header class="topo">
+    <div class="topo-conteudo">
+      <h1>👨‍🍳 Cantina da Miraci</h1>
+
+      <!-- 🍔 BOTÃO MENU MOBILE -->
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+      <!-- MENU HORIZONTAL EMBUTIDO -->
+      <nav class="menu" id="menu">
+        <ul>
+          <li><a href="#">Pratos da Semana</a></li>
+          <li><a href="#">Votação</a></li>
+          <li><a href="#">Sugestão</a></li>
+          <li><a href="#">Favorito</a></li>
+          <li><a href="#">Valores</a></li>
+          <li><a href="#">Feedback</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main class="conteudo">
+    <div class="prato-destaque">
+      <h2>🍝 Prato do Dia</h2>
+      <p>Hoje temos: <strong>Macarrão com molho especial</strong></p>
+      <h3 class="preco">R$ 12,00</h3>
+      <img src="https://www.aarquiteta.com.br/blog/wp-content/uploads/2023/08/como-fazer-macarrao.png" alt="Macarrão">
+    </div>
+  </main>
+
+  <!-- RODAPÉ COMPACTO -->
+  <footer class="rodape">
+    <p>&copy; 2025 Cantina da Miraci</p>
+  </footer>
+
+  <!-- SCRIPT PARA MENU MOBILE -->
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      menu.classList.toggle('aberto');
+    }
+  </script>
+</body>
+</html>

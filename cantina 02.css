@@ -1,0 +1,115 @@
+/* RESET GERAL */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* CORPO DO SITE */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  color: #333;
+}
+
+/* ✅ CABEÇALHO */
+.topo {
+  background-color: #c0392b;
+  color: white;
+  padding: 10px 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+.topo-conteudo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+  flex-wrap: wrap;
+}
+
+.topo h1 {
+  font-size: 20px;
+}
+
+/* ✅ MENU */
+.menu ul {
+  display: flex;
+  list-style: none;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.menu ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.menu ul li a:hover {
+  background-color: #e74c3c;
+}
+
+/* 🍔 BOTÃO PARA CELULAR */
+.menu-toggle {
+  display: none;
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* ✅ CONTEÚDO PRINCIPAL */
+.conteudo {
+  margin-top: 80px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+/* 🍝 DESTAQUE DO PRATO */
+.prato-destaque {
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+}
+
+.prato-destaque h2 {
+  color: #e67e22;
+  margin-bottom: 10px;
+}
+
+.prato-destaque p {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.preco {
+  font-size: 20px;
+  color: #27ae60;
+  margin-bottom: 10px;
+}
+
+/* IMAGEM CENTRALIZADA */
+.prato-destaque img {
+  width: 250px;
+  max-width: 90%;
+  border-radius: 12px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ✅ RODAPÉ SIMPLES */
+.rodape {
+  background-color: #ccc;
+  text-align: center;
+  padding: 5px;
+  font-size: 12px;
+  position: fixed;
+  bottom: 0;
+  width
