@@ -1,56 +1,128 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cantina da Miraci</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!--
+    viewport: importante para responsividade
+    "width=device-width" define que a largura da página
+    será a largura da tela do dispositivo
+    "initial-scale=1" define o zoom inicial da página
+  -->
+  
+  <title>Cantina da Miraci - Macarrão</title>
+
+  <!-- Link para o arquivo CSS externo -->
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-
-  <!-- 🔝 CABEÇALHO COM NOME E MENU INTEGRADO -->
-  <header class="topo">
-    <div class="topo-conteudo">
-      <h1>👨‍🍳 Cantina da Miraci</h1>
-
-      <!-- 🍔 BOTÃO MENU MOBILE -->
-      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-
-      <!-- MENU HORIZONTAL EMBUTIDO -->
-      <nav class="menu" id="menu">
-        <ul>
-          <li><a href="#">Pratos da Semana</a></li>
-          <li><a href="#">Votação</a></li>
-          <li><a href="#">Sugestão</a></li>
-          <li><a href="#">Favorito</a></li>
-          <li><a href="#">Valores</a></li>
-          <li><a href="#">Feedback</a></li>
-        </ul>
-      </nav>
-    </div>
+  <!-- Cabeçalho fixo no topo com botão para abrir/fechar o menu lateral e título -->
+  <header>
+    <!--
+      Botão para abrir/fechar menu no celular
+      aria-label: acessibilidade para leitores de tela
+    -->
+    <button id="menu-toggle" aria-label="Abrir menu">☰</button>
+    <!-- Título principal -->
+    <h1>Cantina da Miraci</h1>
   </header>
 
-  <!-- CONTEÚDO PRINCIPAL -->
-  <main class="conteudo">
-    <div class="prato-destaque">
-      <h2>🍝 Prato do Dia</h2>
-      <p>Hoje temos: <strong>Macarrão com molho especial</strong></p>
-      <h3 class="preco">R$ 12,00</h3>
-      <img src="https://www.aarquiteta.com.br/blog/wp-content/uploads/2023/08/como-fazer-macarrao.png" alt="Macarrão">
-    </div>
-  </main>
+  <!-- Wrapper para conter o menu e o conteúdo lado a lado -->
+  <div class="content-wrapper">
+    <!-- Menu lateral de navegação -->
+    <nav id="menu" aria-label="Menu de navegação">
+      <ul>
+        <!-- Itens do menu -->
+        <li><a href="#">Pratos da Semana</a></li>
+        <li><a href="#">Votação dos Pratos</a></li>
+        <li><a href="#">Sugestão</a></li>
+        <li><a href="#">Prato Favorito</a></li>
+        <li><a href="#">Valores</a></li>
+        <li><a href="#">Doação</a></li>
+      </ul>
+    </nav>
 
-  <!-- RODAPÉ COMPACTO -->
-  <footer class="rodape">
-    <p>&copy; 2025 Cantina da Miraci</p>
+    <!-- Conteúdo principal da página -->
+    <main>
+      <!-- Seção do prato do dia -->
+      <section class="prato-do-dia">
+        <h2>🍝 Prato do Dia</h2>
+        <p>Hoje temos: <strong>Macarrão com molho especial</strong></p>
+        <h3>Valor: R$ 00,00</h3>
+        <!-- Imagem clicável que aumenta ao clicar -->
+        <img
+          src="https://www.aarquiteta.com.br/blog/wp-content/uploads/2023/08/como-fazer-macarrao.png"
+          alt="Macarrão"
+        />
+      </section>
+
+      <!-- Seção com a história do macarrão -->
+      <section class="historia-macarrao">
+        <h2>História do Macarrão</h2>
+        <p>
+          O macarrão é um dos pratos mais populares do mundo, com origem que remonta a milhares de anos. É tradicionalmente feito com massa de trigo e servido com diversos tipos de molhos deliciosos. Sua versatilidade e sabor conquistaram paladares em todas as culturas.
+        </p>
+      </section>
+
+      <!-- Seção com vídeo embutido do YouTube -->
+      <section class="video">
+        <h2>Vídeo sobre Macarrão</h2>
+        <div class="video-wrapper">
+          <!-- iframe para embed do vídeo, responsivo via CSS -->
+          <iframe
+            src="https://www.youtube.com/embed/9bDkZFCZ9Io"
+            title="Vídeo sobre Macarrão"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </section>
+
+      <!-- Seção de enquete -->
+      <section class="enquete">
+        <p>Você gosta de macarrão?</p>
+        <button onclick="responder('sim')">Sim</button>
+        <button onclick="responder('não')">Não</button>
+        <!-- Área para mostrar resultado da enquete -->
+        <div class="resultado" id="resultado-enquete"></div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Rodapé fixo e fino -->
+  <footer>
+    &copy; 2025 Cantina da Miraci - Todos os direitos reservados
   </footer>
 
-  <!-- SCRIPT PARA MENU MOBILE -->
+  <!-- JavaScript para interatividade -->
   <script>
-    function toggleMenu() {
-      const menu = document.getElementById('menu');
-      menu.classList.toggle('aberto');
+    // Seleciona botão e menu
+    const menuToggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('menu');
+
+    // Função para abrir/fechar o menu lateral no celular
+    menuToggle.addEventListener('click', () => {
+      menu.classList.toggle('aberto'); // adiciona/remove classe que mostra o menu
+    });
+
+    // Função para responder enquete
+    function responder(resposta) {
+      const resultado = document.getElementById('resultado-enquete');
+      if (resposta === 'sim') {
+        resultado.textContent = 'Que bom que você gosta de macarrão! 🍝';
+      } else {
+        resultado.textContent = 'Que pena, quem sabe você mude de ideia! 😊';
+      }
     }
+
+    // Seleciona a imagem do macarrão
+    const imgMacarrao = document.querySelector('.prato-do-dia img');
+    imgMacarrao.style.cursor = 'pointer'; // cursor que indica que é clicável
+
+    // Ao clicar na imagem, aumenta/diminui o tamanho
+    imgMacarrao.addEventListener('click', () => {
+      imgMacarrao.classList.toggle('img-ampliada');
+    });
   </script>
 </body>
 </html>
