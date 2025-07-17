@@ -1,41 +1,38 @@
-/* Reset básico para remover margens/padding padrão e facilitar responsividade */
+/* RESET E BASE */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Estilo base do corpo */
 body {
   font-family: Arial, sans-serif;
-  background-color: #ffffff; /* fundo branco */
-  color: #b30000;            /* texto vermelho escuro */
+  background-color: white;
+  color: #b30000;
   line-height: 1.6;
   display: flex;
   flex-direction: column;
-  align-items: center;       /* centraliza conteúdo horizontalmente */
+  align-items: center;
 }
 
-/* Cabeçalho fixo no topo */
+/* CABEÇALHO FIXO */
 header {
-  background-color: #b30000; /* vermelho forte */
+  background-color: #b30000;
   color: white;
   padding: 1rem;
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 1000;             /* mantém acima de outros elementos */
+  z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-/* Título no cabeçalho */
 header h1 {
   font-size: 1.5rem;
 }
 
-/* Botão do menu (☰) */
 #menu-toggle {
   background: none;
   border: none;
@@ -44,36 +41,31 @@ header h1 {
   cursor: pointer;
 }
 
-/* Wrapper principal: menu + conteúdo */
+/* CONTEÚDO E MENU */
 .content-wrapper {
   display: flex;
   flex-direction: row;
   width: 100%;
-  max-width: 1000px;       /* limita largura em telas grandes */
-  margin-top: 70px;        /* espaço para o cabeçalho fixo */
+  max-width: 1000px;
+  margin-top: 70px;
 }
 
-/* Menu lateral (oculto por padrão) */
 #menu {
-  background-color: #b30000; /* vermelho */
+  background-color: #b30000;
   color: white;
   width: 220px;
   padding: 1rem;
-  display: none;             /* só aparece no modo 'aberto' */
-  flex-shrink: 0;
+  display: none;
 }
 
-/* Quando clicado (via JS), exibe o menu */
 #menu.aberto {
   display: block;
 }
 
-/* Lista sem marcadores */
 #menu ul {
   list-style: none;
 }
 
-/* Itens do menu */
 #menu li {
   margin-bottom: 1rem;
   cursor: pointer;
@@ -81,18 +73,57 @@ header h1 {
   transition: transform 0.3s ease;
 }
 
-/* Quando clicado: animação de mexer */
 #menu li:active {
   animation: mexer 0.4s ease;
 }
 
-/* Links dentro do menu */
 #menu a {
   text-decoration: none;
   color: white;
 }
 
-/* Animação de "mexer" ao clicar nos itens */
+/* CONTEÚDO PRINCIPAL CENTRALIZADO */
+main {
+  flex: 1;
+  padding: 1rem;
+  width: 100%;
+}
+
+main > section {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* IMAGEM CENTRALIZADA E INTERATIVA */
+.prato-do-dia img {
+  width: 250px;
+  display: block;
+  margin: 1rem auto;
+  border-radius: 8px;
+  border: 3px solid #b30000;
+  cursor: pointer;
+  transition: transform 0.4s ease;
+}
+
+/* ZOOM NO HOVER */
+.prato-do-dia img:hover {
+  transform: scale(1.15);
+}
+
+/* MOVIMENTO AO CLICAR */
+.prato-do-dia img.img-ampliada {
+  animation: zoom-giro 0.5s ease;
+}
+
+@keyframes zoom-giro {
+  0%   { transform: scale(1) rotate(0deg); }
+  25%  { transform: scale(1.1) rotate(3deg); }
+  50%  { transform: scale(1.15) rotate(-3deg); }
+  75%  { transform: scale(1.1) rotate(2deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+/* ANIMAÇÃO PARA CLICAR NO MENU */
 @keyframes mexer {
   0%   { transform: scale(1); }
   25%  { transform: scale(1.1) rotate(3deg); }
@@ -101,37 +132,69 @@ header h1 {
   100% { transform: scale(1) rotate(0deg); }
 }
 
-/* Conteúdo principal */
-main {
-  flex: 1;
-  padding: 1rem;
+/* ENQUETE */
+.enquete button {
+  background-color: #b30000;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.enquete button:hover {
+  background-color: #990000;
+}
+
+.resultado {
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+/* VÍDEO RESPONSIVO */
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+/* RODAPÉ */
+footer {
+  background-color: #b30000;
+  color: white;
+  text-align: center;
+  padding: 0.5rem;
+  position: fixed;
+  bottom: 0;
   width: 100%;
 }
 
-/* Centraliza todas as seções */
-main > section {
-  text-align: center;
-  margin-bottom: 2rem;
-}
+/* RESPONSIVIDADE PARA CELULAR */
+@media (max-width: 768px) {
+  .content-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
 
-/* Estilo da imagem do macarrão */
-.prato-do-dia img {
-  width: 250px;               /* tamanho reduzido */
-  margin-top: 1rem;
-  transition: transform 0.4s ease;
-  border: 3px solid #b30000;
-  border-radius: 8px;
-  cursor: pointer;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
+  #menu {
+    width: 100%;
+    text-align: center;
+  }
 
-/* Zoom ao passar o mouse */
-.prato-do-dia img:hover {
-  transform: scale(1.15);
-}
+  .prato-do-dia img {
+    width: 80%;
+  }
 
-/* Quando clicada, ativa animação adicional via JS */
-.prato-do-dia img.img-ampliada {
-  animation
+  #menu li {
+    font-size: 1.2rem;
+  }
+}
